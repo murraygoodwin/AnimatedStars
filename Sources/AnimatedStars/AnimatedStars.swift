@@ -40,6 +40,7 @@ public struct AnimatedStars {
                      animations: {
                       
                       stars[n].frame.origin.y -= vc.view.bounds.height
+                      stars[n].transform = stars[n].transform.rotated(by: .pi)
                       
                      }
                      , completion: { _ in
