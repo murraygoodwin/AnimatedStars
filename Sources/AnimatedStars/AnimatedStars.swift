@@ -41,8 +41,8 @@ public struct AnimatedStars {
                       
                       stars[n].frame.origin.y -= vc.view.bounds.height
                       
-                      let rotationAngle: CGFloat = (.pi * 2 * CGFloat.random(in: 0...1))
-                      stars[n].transform = stars[n].transform.rotated(by: .pi)
+                      let rotationAngle: CGFloat = (.pi * 2 * CGFloat.random(in: -1...1))
+                      stars[n].transform = stars[n].transform.rotated(by: rotationAngle)
                       
                      }
                      , completion: { _ in
