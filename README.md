@@ -6,12 +6,14 @@ A customisable animation package that generates a burst of starts that rises fro
 ## USAGE:
 
 ### 1. Create an AnimatedStars object:
-```var animatedStars = AnimatedStars() [with customisation]
+```
+var animatedStars = AnimatedStars() [with customisation]
 let animatedStars = AnimatedStars() [without customisation]
 ```
 
 ### 2. Apply any customisations from the following options:
-```animatedStars.numberOfStars = 50
+```
+animatedStars.numberOfStars = 50
 animatedStars.starSizeMinimum = 20
 animatedStars.starSizeMaximum = 50
 animatedStars.riseTimeMin = 0.8
