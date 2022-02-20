@@ -21,7 +21,7 @@ public enum AnimatedStars {
   }
   
   private static func bubbles(viewController: UIViewController) {
-    animate(viewController: viewController, numberOfImages: 50, imageSizeMinimum: 4, imageSizeMaximum: 25, riseTimeMin: 0.8, riseTimeMax: 3.0,  image: UIImage(systemName: "circle.fill"), imageTintColor: .white)
+    animate(viewController: viewController, numberOfImages: 50, imageSizeMinimum: 4, imageSizeMaximum: 12, riseTimeMin: 0.8, riseTimeMax: 3.0,  image: UIImage(systemName: "circle.fill"), imageTintColor: .white)
   }
   
   private static func animate(viewController: UIViewController, numberOfImages: Int, imageSizeMinimum: Int, imageSizeMaximum: Int, riseTimeMin: Double, riseTimeMax: Double, image: UIImage?, imageTintColor: UIColor) {
