@@ -21,12 +21,12 @@ public enum AnimatedStars {
   }
   
   private static func bubbles(viewController: UIViewController) {
-    animate(viewController: viewController, numberOfImages: 50, imageSizeMinimum: 4, imageSizeMaximum: 10, riseTimeMin: 1.2, riseTimeMax: 3.0,  image: UIImage(systemName: "circle.fill"), imageTintColor: .white)
+    animate(viewController: viewController, numberOfImages: 50, imageSizeMinimum: 2, imageSizeMaximum: 10, riseTimeMin: 1.2, riseTimeMax: 4.0,  image: UIImage(systemName: "circle.fill"), imageTintColor: .white, alpha: 0.1)
   }
   
-  private static func animate(viewController: UIViewController, numberOfImages: Int, imageSizeMinimum: Int, imageSizeMaximum: Int, riseTimeMin: Double, riseTimeMax: Double, image: UIImage?, imageTintColor: UIColor) {
+  private static func animate(viewController: UIViewController, numberOfImages: Int, imageSizeMinimum: Int, imageSizeMaximum: Int, riseTimeMin: Double, riseTimeMax: Double, image: UIImage?, imageTintColor: UIColor, alpha: CGFloat = 1.0) {
     
-    guard let image = image?.withTintColor(imageTintColor, renderingMode: .alwaysOriginal) else {
+    guard let image = image?.withTintColor(imageTintColor.withAlphaComponent(alpha), renderingMode: .alwaysOriginal) else {
       fatalError("Unable to find the image provided.")
     }
     
