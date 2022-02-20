@@ -8,9 +8,11 @@ public enum AnimatedStars {
   }
   
   public static func animate(animation: Animation, viewController: UIViewController) {
-    switch animation {
-      case .risingStars:    risingStars(viewController: viewController)
-      case .bubbles:        bubbles(viewController: viewController)
+    DispatchQueue.main.async {
+      switch animation {
+        case .risingStars:    risingStars(viewController: viewController)
+        case .bubbles:        bubbles(viewController: viewController)
+      }
     }
   }
   
@@ -19,27 +21,21 @@ public enum AnimatedStars {
   }
   
   private static func bubbles(viewController: UIViewController) {
-    animate(viewController: viewController, numberOfImages: 25, imageSizeMinimum: 8, imageSizeMaximum: 35, riseTimeMin: 0.8, riseTimeMax: 3.0,  image: UIImage(systemName: "circle.fill"), imageTintColor: .yellow)
+    animate(viewController: viewController, numberOfImages: 50, imageSizeMinimum: 4, imageSizeMaximum: 25, riseTimeMin: 0.8, riseTimeMax: 3.0,  image: UIImage(systemName: "circle.fill"), imageTintColor: .white)
   }
   
   private static func animate(viewController: UIViewController, numberOfImages: Int, imageSizeMinimum: Int, imageSizeMaximum: Int, riseTimeMin: Double, riseTimeMax: Double, image: UIImage?, imageTintColor: UIColor) {
+    
     guard let image = image?.withTintColor(imageTintColor, renderingMode: .alwaysOriginal) else {
       fatalError("Unable to find the image provided.")
     }
     
     var images = [UIImageView]()
-    
     for _ in 0..<numberOfImages {
       let positionX = Int.random(in: (imageSizeMaximum * -1)...Int(UIScreen.main.bounds.width))
       let starSize = Int.random(in: imageSizeMinimum...imageSizeMaximum)
       let imageView = UIImageView(image: image)
-      
-      imageView.frame = CGRect(
-        x: CGFloat(positionX),
-        y: CGFloat(viewController.view.bounds.height),
-        width: CGFloat(starSize),
-        height: CGFloat(starSize)
-      )
+      imageView.frame = CGRect(x: CGFloat(positionX), y: CGFloat(viewController.view.bounds.height), width: CGFloat(starSize), height: CGFloat(starSize))
       viewController.view.addSubview(imageView)
       images.append(imageView)
     }
