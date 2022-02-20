@@ -1,26 +1,17 @@
-# AnimatedStars
+# Animated Stars and Bubbles
 
-A customisable animation package that generates a burst of starts that rises from the bottom to the top of the screen and then disappears. Images can be customised to create other effects (e.g. bubbles, hearts... anything you like)!
+Ready-to-use animation effects for stars and bubbles to apply to your `UIViewController`s
 
 
 ## USAGE:
 
-### 1. Create an AnimatedStars object:
+### 1. Import AnimatedStars:
 ```
-var animatedStars = AnimatedStars() [with customisation]
-let animatedStars = AnimatedStars() [without customisation]
-```
-
-### 2. Apply any customisations from the following options:
-```
-animatedStars.numberOfStars = 50
-animatedStars.starSizeMinimum = 20
-animatedStars.starSizeMaximum = 50
-animatedStars.riseTimeMin = 0.8
-animatedStars.riseTimeMax = 3.0
-animatedStars.starImage = UIImage(systemName: "star.fill")?.withTintColor(UIColor.yellow, renderingMode: .alwaysOriginal)
+import AnimatedStars
 ```
 
-### 3. Trigger the animation:
-`animatedStars.animateStars(vc: self)`
-
+### 2. Call one of the preset animations from your `UIViewController` of choice:
+```
+AnimatedStars.animate(animation: .bubbles, viewController: self)
+AnimatedStars.animate(animation: .risingStars, viewController: self)
+```
