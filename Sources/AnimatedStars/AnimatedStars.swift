@@ -21,7 +21,7 @@ public enum AnimatedStars {
   }
   
   private static func bubbles(viewController: UIViewController) {
-    animate(viewController: viewController, numberOfImages: 50, imageSizeMinimum: 4, imageSizeMaximum: 14, riseTimeMin: 2.0, riseTimeMax: 3.0,  image: UIImage(systemName: "circle.fill"), imageTintColor: .white)
+    animate(viewController: viewController, numberOfImages: 50, imageSizeMinimum: 4, imageSizeMaximum: 10, riseTimeMin: 1.2, riseTimeMax: 3.0,  image: UIImage(systemName: "circle.fill"), imageTintColor: .white)
   }
   
   private static func animate(viewController: UIViewController, numberOfImages: Int, imageSizeMinimum: Int, imageSizeMaximum: Int, riseTimeMin: Double, riseTimeMax: Double, image: UIImage?, imageTintColor: UIColor) {
@@ -42,7 +42,7 @@ public enum AnimatedStars {
     
     for image in images {
       let riseTime = Double.random(in: riseTimeMin...riseTimeMax)
-      UIView.animate(withDuration: riseTime, delay: 0.0, options: .curveEaseInOut, animations: {
+      UIView.animate(withDuration: riseTime, delay: 0.0, options: .curveEaseOut, animations: {
         image.frame.origin.y -= viewController.view.bounds.height
         let rotationAngle: CGFloat = (.pi * 2 * CGFloat.random(in: -1...1))
         image.transform = image.transform.rotated(by: rotationAngle)
