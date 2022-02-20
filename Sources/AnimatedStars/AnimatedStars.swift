@@ -1,53 +1,50 @@
-
-import Foundation
 import UIKit
 
-public struct AnimatedStars {
+public enum AnimatedStars {
   
-  public init() {}
+  public static func risingStars(viewController: UIViewController) {
+    animate(
+      viewController: viewController,
+      numberOfImages: 50,
+      imageSizeMinimum: 20,
+      imageSizeMaximum: 50,
+      riseTimeMin: 0.8,
+      riseTimeMax: 3.0,
+      image: UIImage(systemName: "star.fill"),
+      imageTintColor: .yellow)
+  }
   
-  public var numberOfStars = 50
-  public var starSizeMinimum = 20
-  public var starSizeMaximum = 50
-  public var riseTimeMin = 0.8
-  public var riseTimeMax = 3.0
-  public var starImage = UIImage(systemName: "star.fill")?.withTintColor(UIColor.yellow, renderingMode: .alwaysOriginal)
-  
-  public func animateStars(vc: UIViewController) {
-    
-    var stars = [UIImageView]()
-    
-    for _ in 1...numberOfStars {
-      
-      let positionX = Int.random(in: (starSizeMaximum * -1)...Int(UIScreen.main.bounds.width))
-      let starSize = Int.random(in: starSizeMinimum...starSizeMaximum)
-      let starImageView = UIImageView(image: starImage)
-      
-      starImageView.frame = CGRect(x: CGFloat(positionX), y: CGFloat(vc.view.bounds.height), width: CGFloat(starSize), height: CGFloat(starSize))
-      
-      vc.view.addSubview(starImageView)
-      stars.append(starImageView)
-      
+  private static func animate(viewController: UIViewController, numberOfImages: Int, imageSizeMinimum: Int, imageSizeMaximum: Int, riseTimeMin: Double, riseTimeMax: Double, image: UIImage?, imageTintColor: UIColor) {
+    guard let image = image?.withTintColor(imageTintColor, renderingMode: .alwaysOriginal) else {
+      fatalError("Unable to find the image provided.")
     }
     
-    for n in 0..<stars.count {
+    var images = [UIImageView]()
+    
+    for _ in 0..<numberOfImages {
+      let positionX = Int.random(in: (imageSizeMaximum * -1)...Int(UIScreen.main.bounds.width))
+      let starSize = Int.random(in: imageSizeMinimum...imageSizeMaximum)
+      let imageView = UIImageView(image: image)
       
+      imageView.frame = CGRect(
+        x: CGFloat(positionX),
+        y: CGFloat(viewController.view.bounds.height),
+        width: CGFloat(starSize),
+        height: CGFloat(starSize)
+      )
+      viewController.view.addSubview(imageView)
+      images.append(imageView)
+    }
+    
+    for image in images {
       let riseTime = Double.random(in: riseTimeMin...riseTimeMax)
-      
-      UIView.animate(withDuration: riseTime,
-                     delay: 0.0,
-                     options: .curveEaseOut,
-                     animations: {
-                      
-                      stars[n].frame.origin.y -= vc.view.bounds.height
-                      
-                      let rotationAngle: CGFloat = (.pi * 2 * CGFloat.random(in: -1...1))
-                      stars[n].transform = stars[n].transform.rotated(by: rotationAngle)
-                      
-                     }
-                     , completion: { _ in
-                      stars[n].removeFromSuperview()
-                     })
+      UIView.animate(withDuration: riseTime, delay: 0.0, options: .curveEaseOut, animations: {
+        image.frame.origin.y -= viewController.view.bounds.height
+        let rotationAngle: CGFloat = (.pi * 2 * CGFloat.random(in: -1...1))
+        image.transform = image.transform.rotated(by: rotationAngle)
+      }, completion: { _ in
+        image.removeFromSuperview()
+      })
     }
   }
 }
