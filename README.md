@@ -12,6 +12,6 @@ import AnimatedStars
 
 ### 2. Call one of the preset animations from your `UIViewController` of choice:
 ```
-AnimatedStars.animate(animation: .bubbles, viewController: self)
-AnimatedStars.animate(animation: .risingStars, viewController: self)
+animate(.bubbles, zPosition: .behindOtherViews)
+animate(.risingStars, zPosition: .onTopOfOtherViews)
 ```
