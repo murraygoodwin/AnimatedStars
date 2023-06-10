@@ -19,12 +19,31 @@ public extension UIViewController {
     }
   }
   
-  private func risingStars(zPosition: ZPosition) {
-    animate(zPosition: zPosition, numberOfImages: 50, imageSizeMinimum: 20, imageSizeMaximum: 50, riseTimeMin: 0.8, riseTimeMax: 3.0,  image: UIImage(systemName: "star.fill"), imageTintColor: .yellow)
+  func risingStars(zPosition: ZPosition, imageTintColor: UIColor = .yellow) {
+    animate(
+      zPosition: zPosition,
+      numberOfImages: 50,
+      imageSizeMinimum: 20,
+      imageSizeMaximum: 50,
+      riseTimeMin: 0.8,
+      riseTimeMax: 3.0,
+      image: UIImage(systemName: "star.fill"),
+      imageTintColor: imageTintColor
+    )
   }
   
-  private func bubbles(zPosition: ZPosition) {
-    animate(zPosition: zPosition, numberOfImages: 50, imageSizeMinimum: 2, imageSizeMaximum: 10, riseTimeMin: 1.2, riseTimeMax: 4.0,  image: UIImage(systemName: "circle.fill"), imageTintColor: .white, alpha: 0.1)
+  func bubbles(zPosition: ZPosition) {
+    animate(
+      zPosition: zPosition,
+      numberOfImages: 50,
+      imageSizeMinimum: 2,
+      imageSizeMaximum: 10,
+      riseTimeMin: 1.2,
+      riseTimeMax: 4.0,
+      image: UIImage(systemName: "circle.fill"),
+      imageTintColor: .white,
+      alpha: 0.1
+    )
   }
   
   private func animate(
